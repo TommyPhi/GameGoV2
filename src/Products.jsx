@@ -5,7 +5,7 @@ import ProductGrid from "./components/ProductGrid";
 export default function Products() {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [url, setUrl] = useState(process.env.REACT_APP_GET_ALL_PRODUCTS)
+    const [url, setUrl] = useState('/database')
 
     function handleDropdown() {
       if(isOpen == false) {
