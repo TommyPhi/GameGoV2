@@ -35,8 +35,8 @@ export default function Login() {
           return
         } else {
           localStorage.setItem("cart", JSON.stringify(result.cartList).replaceAll('"', ''))
+          window.location.href = "/";
         }
-        window.location.href = "/";
       }
     })
     }
