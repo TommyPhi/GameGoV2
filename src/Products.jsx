@@ -5,7 +5,7 @@ import ProductGrid from "./components/ProductGrid";
 export default function Products() {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [url, setUrl] = useState('/database')
+    const [url, setUrl] = useState('https://gamegov2-be.onrender.com/database')
 
     function handleDropdown() {
       if(isOpen == false) {
