@@ -4,10 +4,11 @@ const mysql = require('mysql2')
 // Declaring connection variables that creates a connection to Database
 const connection = mysql.createConnection({
     // Sets up connection object with host, database, user, and password values.
-    host: 'localhost',
-    database: 'GameGo',
-    user: 'root',
-    password: 'password',
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_NAME,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    port: process.env.DATABASE_PORT,
 });
 
 // Connect method that uses connection variable to establish connection.
