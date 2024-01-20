@@ -31,12 +31,12 @@ export default function Login() {
         localStorage.setItem("currentUser", JSON.stringify(result.username))
         localStorage.setItem("userEmail", JSON.stringify(result.email))
         localStorage.setItem("userID", JSON.stringify(result.userID))
-        if(!result.cart) {
-          return
+        if(!result.cartList) {
+          console.log('no cart')
         } else {
           localStorage.setItem("cart", JSON.stringify(result.cartList).replaceAll('"', ''))
-          window.location.href = "/";
         }
+        window.location.href='/'
       }
     })
     }
@@ -63,10 +63,10 @@ export default function Login() {
               <label>Password</label>
               <input type='password' name='password' id='userPasswordInput' onChange={(e) => setPassword(e.target.value)}></input>
               <div id='loginFormButtons'>
-                <button type='submit' id='loginButton'>Login</button>
+                <button type='submit' id='loginButton' onClick={handleSubmit}>Login</button>
                 <small>OR</small>
                 <Link to="/register" id="registerButton">
-                  <button>
+                  <button type='button'>
                     Register
                   </button>
                 </Link>
