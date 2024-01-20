@@ -29,7 +29,7 @@ export default function UserSettings() {
 
     function handleNameChange(e) {
         e.preventDefault();
-        fetch('/changeName', {
+        fetch(process.env.BACKEND_URL + '/changeName', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

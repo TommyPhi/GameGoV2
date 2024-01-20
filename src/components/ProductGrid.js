@@ -7,7 +7,7 @@ export default function ProductGrid({url}) {
     const [backendData, setBackendData] = useState([{}])
 
     useEffect(() => {
-        fetch(url).then(
+        fetch(process.env.BACKEND_URL + url).then(
             response => response.json()
         ).then(
             data => {

@@ -10,7 +10,7 @@ export default function Login() {
 
      function handleSubmit(e) {
       e.preventDefault();
-      fetch('/userLogin', {
+      fetch(process.env.BACKEND_URL + '/userLogin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

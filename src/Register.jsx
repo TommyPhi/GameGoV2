@@ -13,7 +13,7 @@ export default function Register() {
 
    function handleSubmit(e) {
     e.preventDefault();
-    fetch('/createUser', {
+    fetch(process.env.BACKEND_URL + '/createUser', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
