@@ -7,7 +7,7 @@ export default function Filtered() {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get("search");
-    const urlSearch = process.env.REACT_APP_BACKEND_URL + '/filter?search=' + query;
+    const urlSearch = '/filter?search=' + query;
 
     return (
         <>
