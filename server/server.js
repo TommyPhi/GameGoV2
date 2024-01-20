@@ -3,9 +3,11 @@ const app = express()
 const game = require('./utils/game')
 const connection = require('./database')
 const bcrypt = require('bcrypt');
+const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
+app.use(cors());
 
 app.get('/api', (req, res) => {
     game().then(result => {
