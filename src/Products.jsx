@@ -5,7 +5,7 @@ import ProductGrid from "./components/ProductGrid";
 export default function Products() {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [url, setUrl] = useState(process.env.BACKEND_URL + '/database')
+    const [url, setUrl] = useState(process.env.REACT_APP_BACKEND_URL + '/database')
 
     function handleDropdown() {
       if(isOpen == false) {
@@ -21,7 +21,7 @@ export default function Products() {
     }
 
     const handleSort = (sortBy) => {
-      setUrl(process.env.BACKEND_URL + `/sort?sortBy=${sortBy}`);
+      setUrl(process.env.REACT_APP_BACKEND_URL + `/sort?sortBy=${sortBy}`);
     };
 
     return (

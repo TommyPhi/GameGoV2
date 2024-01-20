@@ -8,9 +8,11 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const errorBlock = useRef(null)
 
+    console.log(process.env.REACT_APP_BACKEND_URL)
+
      function handleSubmit(e) {
       e.preventDefault();
-      fetch(process.env.BACKEND_URL + '/userLogin', {
+      fetch(process.env.REACT_APP_BACKEND_URL + '/userLogin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

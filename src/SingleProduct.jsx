@@ -14,7 +14,7 @@ export default function SingleProduct() {
     const [cart, setCart] = useState('');
 
     useEffect(() => {
-        fetch(process.env.BACKEND_URL + `/product?id=${routeParams.id}`).then(
+        fetch(process.env.REACT_APP_BACKEND_URL + `/product?id=${routeParams.id}`).then(
             response => response.json()
         ).then(
             data => {

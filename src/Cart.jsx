@@ -54,7 +54,7 @@ export default function Cart() {
     useEffect(() => {
         if(localStorage.getItem('cart')) {
             setCart(localStorage.getItem('cart'))
-            fetch(process.env.BACKEND_URL + '/getCartProducts', {
+            fetch(process.env.REACT_APP_BACKEND_URL + '/getCartProducts', {
                 method: 'POST',
                 headers: {
                   'Accept': 'application/json',
