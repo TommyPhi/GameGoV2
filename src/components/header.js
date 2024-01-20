@@ -14,7 +14,7 @@ export default function Header() {
 
   function logout() {
     if(localStorage.getItem('cart') || localStorage.getItem('cart') === '') {
-      fetch('/saveCart', {
+      fetch(process.env.REACT_APP_BACKEND_URL + '/saveCart', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
