@@ -59,7 +59,7 @@ export default function UserSettings() {
 
     function handleEmailSubmit(e) {
         e.preventDefault();
-        fetch('/changeEmail', {
+        fetch(process.env.REACT_APP_BACKEND_URL + '/changeEmail', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -89,7 +89,7 @@ export default function UserSettings() {
 
     function handlePasswordSubmit(e) {
         e.preventDefault();
-        fetch('/changePassword', {
+        fetch(process.env.REACT_APP_BACKEND_URL + '/changePassword', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

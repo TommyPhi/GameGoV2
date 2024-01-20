@@ -31,7 +31,11 @@ export default function Login() {
         localStorage.setItem("currentUser", JSON.stringify(result.username))
         localStorage.setItem("userEmail", JSON.stringify(result.email))
         localStorage.setItem("userID", JSON.stringify(result.userID))
-        localStorage.setItem("cart", JSON.stringify(result.cartList).replaceAll('"', ''))
+        if(!result.cart) {
+          return
+        } else {
+          localStorage.setItem("cart", JSON.stringify(result.cartList).replaceAll('"', ''))
+        }
         window.location.href = "/";
       }
     })
