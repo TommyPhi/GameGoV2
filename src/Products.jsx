@@ -69,14 +69,14 @@ export default function Products() {
               <button onClick={handleFilterDropdown}>Filter by &#9660;</button>
               <div id="filterDropdown" class="dropdown-content">
                 <button onClick={() => handleFilter('Singleplayer')}>Single Player</button>
-                <button onClick={() => handleFilter('priceHighToLow')}>Multiplayer</button>
-                <button onClick={() => handleFilter('nameA-Z')}>RPG (Role-Playing Game)</button>
-                <button onClick={() => handleFilter('nameZ-A')}>Beat 'em up / Hack & Slash</button>
-                <button onClick={() => handleFilter('ratingHighToLow')}>Adventure</button>
-                <button onClick={() => handleFilter('ratingLowToHigh')}>Indie</button>
-                <button onClick={() => handleFilter('ratingLowToHigh')}>Shooter</button>
-                <button onClick={() => handleFilter('ratingLowToHigh')}>Puzzle</button>
-                <button onClick={() => handleFilter('ratingLowToHigh')}>Simulator</button>
+                <button onClick={() => handleFilter('Multiplayer')}>Multiplayer</button>
+                <button onClick={() => handleFilter('RPG')}>RPG (Role-Playing Game)</button>
+                <button onClick={() => handleFilter('Hack')}>Beat 'em up / Hack & Slash</button>
+                <button onClick={() => handleFilter('Adventure')}>Adventure</button>
+                <button onClick={() => handleFilter('Indie')}>Indie</button>
+                <button onClick={() => handleFilter('Shooter')}>Shooter</button>
+                <button onClick={() => handleFilter('Puzzle')}>Puzzle</button>
+                <button onClick={() => handleFilter('Simulator')}>Simulator</button>
               </div>
             </div>
           </div>

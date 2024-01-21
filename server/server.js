@@ -194,17 +194,129 @@ app.get('/sort', (req, res) => {
     }
 })
 
-app.get('filterBy', (req, res) => {
+app.get('/filterBy', (req, res) => {
     const filterQuery = req.query.category;
     switch(filterQuery) {
         case 'Singleplayer':
-            const query = `
+            const singlePQuery = `
             SELECT *
             FROM products
             WHERE game_modes LIKE '%Single player%'
             `
 
-            connection.query(query, (err, data) => {
+            connection.query(singlePQuery, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Multiplayer':
+            const multiplayer = `
+            SELECT *
+            FROM products
+            WHERE game_modes LIKE '%${filterQuery}%'
+            `
+
+            connection.query(multiplayer, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'RPG':
+            const rpg = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(rpg, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Hack':
+            const hack = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(hack, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Adventure':
+            const adventure = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(adventure, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Indie':
+            const indie = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(indie, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Shooter':
+            const shooter = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(shooter, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Puzzle':
+            const puzzle = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(rpg, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+        case 'Simulator':
+            const sim = `
+            SELECT *
+            FROM products
+            WHERE genres LIKE '%${filterQuery}%'
+            `
+
+            connection.query(sim, (err, data) => {
                 if(err) {
                     throw err
                 }
