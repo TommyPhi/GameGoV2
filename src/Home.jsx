@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState, useRef} from "react";
 
 import DealCard from "./components/dealCard";
 import HomeHeader from './components/homeHeader'
@@ -7,13 +7,98 @@ import sm2Logo from "./assets/images/SpiderMan2_logo.png"
 import sm2Video from "./assets/videos/spiderman2trailer.mp4"
 import lotfLogo from "./assets/images/lotf-logo.png"
 import lotfTrending from "./assets/images/lotf-trending.jpg"
+import palLogo from "./assets/images/pal-logo.png"
+import palBanner from "./assets/images/palworld-banner.png"
+import avatarLogo from "./assets/images/avatar-logo.png"
+import avatarBanner from "./assets/images/avatar-banner.jpeg"
 import smMM from "./assets/images/spidermanmm-cover.png"
 import rd2Cover from "./assets/images/readdead2-cover.png";
 import mHuntCover from "./assets/images/mh-world-cover.png";
 import arkAscend from "./assets/images/arkascended-cover.png";
 import creatorSpotlight from "./assets/images/penguinz0.png";
+import Trending from "./components/Trending";
 
 export default function Home() {
+
+  const logoArray = [lotfLogo, palLogo, avatarLogo];
+  const bannerArray = [lotfTrending, palBanner, avatarBanner];
+
+  const MINUTE_MS = 5000;
+  const maxCount = 2;
+
+  const [logo, setLogo] = useState(logoArray[0])
+  const [banner, setBanner] = useState(bannerArray[0])
+  const index1 = useRef(null);
+  const index2 = useRef(null);
+  const index3 = useRef(null);
+
+  let currentIndex = 0
+
+  function setIndex1() {
+    currentIndex = 0;
+    index1.current.style.backgroundColor = 'black'
+    index2.current.style.backgroundColor = '#f1f1f1'
+    index3.current.style.backgroundColor = '#f1f1f1'
+    setLogo(logoArray[currentIndex])
+    setBanner(bannerArray[currentIndex])
+    return currentIndex;
+  }
+
+  function setIndex2() {
+    currentIndex = 1;
+    index1.current.style.backgroundColor = '#f1f1f1'
+    index2.current.style.backgroundColor = 'black'
+    index3.current.style.backgroundColor = '#f1f1f1'
+    setLogo(logoArray[currentIndex])
+    setBanner(bannerArray[currentIndex])
+    return currentIndex;
+  }
+
+  function setIndex3() {
+    currentIndex = 2;
+    index1.current.style.backgroundColor = '#f1f1f1'
+    index2.current.style.backgroundColor = '#f1f1f1'
+    index3.current.style.backgroundColor = 'black'
+    setLogo(logoArray[currentIndex])
+    setBanner(bannerArray[currentIndex])
+    return currentIndex;
+  }
+
+  useEffect(() => {
+    index1.current.style.backgroundColor = 'black'
+    const interval = setInterval(() => {
+      if(currentIndex == maxCount) {
+        currentIndex = 0
+        setLogo(logoArray[currentIndex])
+        setBanner(bannerArray[currentIndex])
+      } else {
+        currentIndex++
+        setLogo(logoArray[currentIndex])
+        setBanner(bannerArray[currentIndex])
+      }
+      switch (currentIndex) {
+        case 0:
+          index1.current.style.backgroundColor = 'black'
+          index2.current.style.backgroundColor = '#f1f1f1'
+          index3.current.style.backgroundColor = '#f1f1f1'
+          break;
+        case 1:
+          index1.current.style.backgroundColor = '#f1f1f1'
+          index2.current.style.backgroundColor = 'black'
+          index3.current.style.backgroundColor = '#f1f1f1'
+          break;
+        case 2:
+          index1.current.style.backgroundColor = '#f1f1f1'
+          index2.current.style.backgroundColor = '#f1f1f1'
+          index3.current.style.backgroundColor = 'black'
+          break;
+      }
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, [])
+
+
     return (
         <>
   <meta charSet="UTF-8" />
@@ -32,16 +117,11 @@ export default function Home() {
         <source src={sm2Video} type="video/mp4" />
       </video>
     </div>
-    <div id="trending" className="trending">
-      <div className="trending-overlay">
-        <img src={lotfLogo} />
-        <button>SHOP NOW</button>
-      </div>
-      <img
-        id="lotf-trending"
-        className="trending-banner"
-        src={lotfTrending}
-      />
+    <Trending logo={logo} banner = {banner} />
+    <div id="trendingTabs">
+      <div ref={index1} onClick={setIndex1}></div>
+      <div ref={index2} onClick={setIndex2}></div>
+      <div ref={index3} onClick={setIndex3}></div>
     </div>
     <h1 className="home-title" id="deals-title">
       DEALS OF THE DAY
