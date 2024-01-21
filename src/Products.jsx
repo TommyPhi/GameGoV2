@@ -38,13 +38,13 @@ export default function Products() {
     const handleSort = (sortBy) => {
       setUrl(`/sort?sortBy=${sortBy}`);
       resultsMessage.current.style.display = 'block'
-      resultsMessage.current.textContent = `Results for: '${sortBy}'`
+      resultsMessage.current.textContent = `Sorting by: '${sortBy}'`
     };
 
     const handleFilter = (filterBy) => {
       setUrl(`/filterBy?category=${filterBy}`);
       resultsMessage.current.style.display = 'block'
-      resultsMessage.current.textContent = `Results for: '${filterBy}'`
+      resultsMessage.current.textContent = `Filtering for: '${filterBy}'`
     };
 
     function handleClearFilters() {
@@ -82,7 +82,7 @@ export default function Products() {
                 <button onClick={() => handleFilter('Singleplayer')}>Single Player</button>
                 <button onClick={() => handleFilter('Multiplayer')}>Multiplayer</button>
                 <button onClick={() => handleFilter('RPG')}>RPG (Role-Playing Game)</button>
-                <button onClick={() => handleFilter("Hack & Slash")}>Beat 'em up / Hack & Slash</button>
+                <button onClick={() => handleFilter("Beat 'em up")}>Beat 'em up / Hack & Slash</button>
                 <button onClick={() => handleFilter('Adventure')}>Adventure</button>
                 <button onClick={() => handleFilter('Indie')}>Indie</button>
                 <button onClick={() => handleFilter('Shooter')}>Shooter</button>
