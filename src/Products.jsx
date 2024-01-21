@@ -82,7 +82,7 @@ export default function Products() {
                 <button onClick={() => handleFilter('Singleplayer')}>Single Player</button>
                 <button onClick={() => handleFilter('Multiplayer')}>Multiplayer</button>
                 <button onClick={() => handleFilter('RPG')}>RPG (Role-Playing Game)</button>
-                <button onClick={() => handleFilter('Beat `em up / Hack & Slash')}>Beat 'em up / Hack & Slash</button>
+                <button onClick={() => handleFilter("Beat 'em up / Hack & Slash")}>Beat 'em up / Hack & Slash</button>
                 <button onClick={() => handleFilter('Adventure')}>Adventure</button>
                 <button onClick={() => handleFilter('Indie')}>Indie</button>
                 <button onClick={() => handleFilter('Shooter')}>Shooter</button>

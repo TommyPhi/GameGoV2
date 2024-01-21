@@ -239,7 +239,7 @@ app.get('/filterBy', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'Beat `em up / Hack & Slash':
+        case "Beat 'em up / Hack & Slash":
             const hack = `
             SELECT *
             FROM products
