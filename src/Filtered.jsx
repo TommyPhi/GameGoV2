@@ -16,6 +16,9 @@ export default function Filtered() {
         <title>GameGO</title>
         <Header />
         <main id="main">
+        <div id='productsHeader'>
+            <h1>Results for: "{query}"</h1>
+        </div>
         <div id="products">
             <ProductGrid url={urlSearch}/>
         </div>

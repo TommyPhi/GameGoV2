@@ -302,7 +302,7 @@ app.get('/filterBy', (req, res) => {
             WHERE genres LIKE '%${filterQuery}%'
             `
 
-            connection.query(rpg, (err, data) => {
+            connection.query(puzzle, (err, data) => {
                 if(err) {
                     throw err
                 }
