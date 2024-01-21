@@ -880,6 +880,10 @@ small {
     margin-bottom: 15px;
 }
 
+#resultsMessage {
+    display: none;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;

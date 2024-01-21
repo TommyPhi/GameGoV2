@@ -113,7 +113,7 @@ app.get('/filter', (req, res) => {
 app.get('/sort', (req, res) => {
     const sortQuery = req.query.sortBy;
     switch(sortQuery) {
-        case 'priceLowToHigh':
+        case 'Price Low to High':
             const sortPriceLowToHigh = `
             SELECT *
             FROM products
@@ -126,7 +126,7 @@ app.get('/sort', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'priceHighToLow':
+        case 'Price High to Low':
             const sortPriceHighToLow = `
             SELECT *
             FROM products
@@ -139,7 +139,7 @@ app.get('/sort', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'nameA-Z':
+        case 'Name A - Z':
             const sortNameA_Z = `
             SELECT *
             FROM products
@@ -152,7 +152,7 @@ app.get('/sort', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'nameZ-A':
+        case 'Name Z - A':
             const sortNameZ_A = `
             SELECT *
             FROM products
@@ -165,7 +165,7 @@ app.get('/sort', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'ratingHighToLow':
+        case 'Rating High to Low':
             const ratingHighToLow = `
             SELECT *
             FROM products
@@ -178,7 +178,7 @@ app.get('/sort', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'ratingLowToHigh':
+        case 'Rating Low to High':
             const ratingLowToHigh = `
             SELECT *
             FROM products
@@ -239,11 +239,11 @@ app.get('/filterBy', (req, res) => {
                 res.send(data)
             })
             break;
-        case 'Hack':
+        case 'Beat `em up / Hack & Slash':
             const hack = `
             SELECT *
             FROM products
-            WHERE genres LIKE '%${filterQuery}%'
+            WHERE genres LIKE '%Hack%'
             `
 
             connection.query(hack, (err, data) => {

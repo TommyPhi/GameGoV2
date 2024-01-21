@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import Header from "./components/header";
 import ProductGrid from "./components/ProductGrid";
 
@@ -6,6 +6,7 @@ export default function Products() {
 
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [isFilterOpen, setIsFilterOpen] = useState(false)
+    const resultsMessage = useRef(null)
     const [url, setUrl] = useState('/database')
 
     function handleSortDropdown() {
@@ -36,10 +37,14 @@ export default function Products() {
 
     const handleSort = (sortBy) => {
       setUrl(`/sort?sortBy=${sortBy}`);
+      resultsMessage.current.style.display = 'block'
+      resultsMessage.current.textContent = `Results for: '${sortBy}'`
     };
 
     const handleFilter = (filterBy) => {
       setUrl(`/filterBy?category=${filterBy}`);
+      resultsMessage.current.style.display = 'block'
+      resultsMessage.current.textContent = `Results for: '${filterBy}'`
     };
 
     return (
@@ -53,16 +58,17 @@ export default function Products() {
         <main id="main">
           <div id='productsHeader'>
             <h1>Video Games</h1>
+            <h3 id="resultsMessage" ref={resultsMessage}></h3>
             <div id="dropDownBtns">
             <div className="dropdown">
               <button onClick={handleSortDropdown}>Sort by &#9660;</button>
               <div id="sortDropdown" class="dropdown-content">
-                <button onClick={() => handleSort('priceLowToHigh')}>Price Low To High</button>
-                <button onClick={() => handleSort('priceHighToLow')}>Price High To Low</button>
-                <button onClick={() => handleSort('nameA-Z')}>Product Name A - Z</button>
-                <button onClick={() => handleSort('nameZ-A')}>Product Name Z - A</button>
-                <button onClick={() => handleSort('ratingHighToLow')}>Rating High To Low</button>
-                <button onClick={() => handleSort('ratingLowToHigh')}>Rating Low To High</button>
+                <button onClick={() => handleSort('Price Low to High')}>Price Low To High</button>
+                <button onClick={() => handleSort('Price High to Low')}>Price High To Low</button>
+                <button onClick={() => handleSort('Name A - Z')}>Product Name A - Z</button>
+                <button onClick={() => handleSort('Name Z - A')}>Product Name Z - A</button>
+                <button onClick={() => handleSort('Rating High to Low')}>Rating High To Low</button>
+                <button onClick={() => handleSort('Rating Low to High')}>Rating Low To High</button>
               </div>
             </div>
             <div className="dropdown">
@@ -71,7 +77,7 @@ export default function Products() {
                 <button onClick={() => handleFilter('Singleplayer')}>Single Player</button>
                 <button onClick={() => handleFilter('Multiplayer')}>Multiplayer</button>
                 <button onClick={() => handleFilter('RPG')}>RPG (Role-Playing Game)</button>
-                <button onClick={() => handleFilter('Hack')}>Beat 'em up / Hack & Slash</button>
+                <button onClick={() => handleFilter('Beat `em up / Hack & Slash')}>Beat 'em up / Hack & Slash</button>
                 <button onClick={() => handleFilter('Adventure')}>Adventure</button>
                 <button onClick={() => handleFilter('Indie')}>Indie</button>
                 <button onClick={() => handleFilter('Shooter')}>Shooter</button>
