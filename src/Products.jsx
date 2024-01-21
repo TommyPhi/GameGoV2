@@ -4,24 +4,42 @@ import ProductGrid from "./components/ProductGrid";
 
 export default function Products() {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isSortOpen, setIsSortOpen] = useState(false)
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
     const [url, setUrl] = useState('/database')
 
-    function handleDropdown() {
-      if(isOpen == false) {
+    function handleSortDropdown() {
+      if(isSortOpen == false) {
         const dropDown = document.getElementById('sortDropdown');
         dropDown.style.display = 'flex';
         dropDown.style.flexDirection = 'column';
-        setIsOpen(true);
+        setIsSortOpen(true);
       } else {
         const dropDown = document.getElementById('sortDropdown');
         dropDown.style.display = 'none';
-        setIsOpen(false);
+        setIsSortOpen(false);
+      }
+    }
+
+    function handleFilterDropdown() {
+      if(isFilterOpen == false) {
+        const dropDown = document.getElementById('filterDropdown');
+        dropDown.style.display = 'flex';
+        dropDown.style.flexDirection = 'column';
+        setIsFilterOpen(true);
+      } else {
+        const dropDown = document.getElementById('filterDropdown');
+        dropDown.style.display = 'none';
+        setIsFilterOpen(false);
       }
     }
 
     const handleSort = (sortBy) => {
       setUrl(`/sort?sortBy=${sortBy}`);
+    };
+
+    const handleFilter = (filterBy) => {
+      setUrl(`/filterBy?category=${filterBy}`);
     };
 
     return (
@@ -35,8 +53,9 @@ export default function Products() {
         <main id="main">
           <div id='productsHeader'>
             <h1>Video Games</h1>
+            <div id="dropDownBtns">
             <div className="dropdown">
-            <button onClick={handleDropdown}>Sort by &#9660;</button>
+              <button onClick={handleSortDropdown}>Sort by &#9660;</button>
               <div id="sortDropdown" class="dropdown-content">
                 <button onClick={() => handleSort('priceLowToHigh')}>Price Low To High</button>
                 <button onClick={() => handleSort('priceHighToLow')}>Price High To Low</button>
@@ -46,6 +65,21 @@ export default function Products() {
                 <button onClick={() => handleSort('ratingLowToHigh')}>Rating Low To High</button>
               </div>
             </div>
+            <div className="dropdown">
+              <button onClick={handleFilterDropdown}>Filter by &#9660;</button>
+              <div id="filterDropdown" class="dropdown-content">
+                <button onClick={() => handleFilter('Singleplayer')}>Single Player</button>
+                <button onClick={() => handleFilter('priceHighToLow')}>Multiplayer</button>
+                <button onClick={() => handleFilter('nameA-Z')}>RPG (Role-Playing Game)</button>
+                <button onClick={() => handleFilter('nameZ-A')}>Beat 'em up / Hack & Slash</button>
+                <button onClick={() => handleFilter('ratingHighToLow')}>Adventure</button>
+                <button onClick={() => handleFilter('ratingLowToHigh')}>Indie</button>
+                <button onClick={() => handleFilter('ratingLowToHigh')}>Shooter</button>
+                <button onClick={() => handleFilter('ratingLowToHigh')}>Puzzle</button>
+                <button onClick={() => handleFilter('ratingLowToHigh')}>Simulator</button>
+              </div>
+            </div>
+          </div>
           </div>
           <div id="products">
             <ProductGrid key={url} url = {url} />

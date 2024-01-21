@@ -194,6 +194,26 @@ app.get('/sort', (req, res) => {
     }
 })
 
+app.get('filterBy', (req, res) => {
+    const filterQuery = req.query.category;
+    switch(filterQuery) {
+        case 'Singleplayer':
+            const query = `
+            SELECT *
+            FROM products
+            WHERE game_modes LIKE '%Single player%'
+            `
+
+            connection.query(query, (err, data) => {
+                if(err) {
+                    throw err
+                }
+                res.send(data)
+            })
+            break;
+    }
+})
+
 app.post('/createUser', (req, res) => {
     const username = req.body.username;
     const email = req.body.email;

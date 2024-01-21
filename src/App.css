@@ -858,6 +858,10 @@ small {
     color: black;
 }
 
+#dropDownBtns {
+    display: flex;
+}
+
 #productsHeader {
     display: flex;
     flex-direction: column;
@@ -879,6 +883,7 @@ small {
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .dropdown-content {
@@ -899,6 +904,18 @@ small {
 }
 
 #sortDropdown button:hover {
+    background-color: #dddddd;
+}
+
+#filterDropdown button {
+    color: black;
+    border: none;
+    margin-bottom: 0;
+    font-size: 11pt;
+    padding: 15px;
+}
+
+#filterDropdown button:hover {
     background-color: #dddddd;
 }
 
