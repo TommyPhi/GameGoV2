@@ -7,7 +7,7 @@ export default function PurchaseSummary(props) {
         <div id='orderDetails'>
             <div id="preTotalInfo">
                 <div className='preTotalDetail'>
-                    <p>Subtotal (# items): </p>
+                    <p>Subtotal ({props.cartCount} items): </p>
                     <p>${props.subTotal}</p>
                 </div>
                 <div className='preTotalDetail'>

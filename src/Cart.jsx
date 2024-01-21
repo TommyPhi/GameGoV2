@@ -11,9 +11,16 @@ export default function Cart() {
     const [salesTax, setSalesTax] = useState(0)
     const [shippingFee, setShippingFee] = useState(0)
     const [total, setTotal] = useState(0)
+    const [cartCount, setCartCount] = useState((localStorage.getItem('cart').split(',')).filter(onlyUnique).length)
     const orderSummary = useRef(null)
     const cartContainer = useRef(null)
     const cartMessage = useRef(null)
+
+    function onlyUnique(value, index, array) {
+        return array.indexOf(value) === index;
+      }
+
+    
     
 
     function handleRemoveClick(e) {
@@ -124,7 +131,7 @@ export default function Cart() {
             )))}
         </div>
         <div id="purchaseSummary" ref={orderSummary}>
-            <PurchaseSummary subTotal = {Math.ceil(subTotal * 100) / 100} tax = {salesTax} shippingFee = {shippingFee} total = {Math.ceil(total * 100) / 100} clearCart = {handleClearCart}/>
+            <PurchaseSummary cartCount={cartCount} subTotal = {Math.ceil(subTotal * 100) / 100} tax = {salesTax} shippingFee = {shippingFee} total = {Math.ceil(total * 100) / 100} clearCart = {handleClearCart}/>
         </div>
         </main>
     </div>

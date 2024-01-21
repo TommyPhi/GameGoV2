@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Header from './components/header'
 import { useParams } from 'react-router-dom'
 
@@ -12,6 +12,7 @@ export default function SingleProduct() {
     const [artworks, setArtworks] = useState([])
     const [currentPreview, setCurrentPreview] = useState('')
     const [cart, setCart] = useState('');
+    const addCartBtn = useRef(null)
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BACKEND_URL + `/product?id=${routeParams.id}`).then(
@@ -27,14 +28,28 @@ export default function SingleProduct() {
         )
     }, [])
 
+
     function handleAddToCart() {
       if(!localStorage.getItem('cart')) {
         localStorage.setItem('cart', backendData[0].id)
         setCart(localStorage.getItem('cart'))
+        addCartBtn.current.style.backgroundColor = '#3BB143'
+        addCartBtn.current.textContent = 'Added to cart!'
+        setTimeout(() => {
+          addCartBtn.current.style.backgroundColor = 'red'
+          addCartBtn.current.textContent = 'Add to Cart'
+        }, 2000)
+
       } else if(localStorage.getItem('cart') !== null) {
         const cartArray = localStorage.getItem('cart').split(',');
         cartArray.push(backendData[0].id)
         localStorage.setItem('cart', `${cartArray.join(',')}`)
+        addCartBtn.current.style.backgroundColor = '#3BB143'
+        addCartBtn.current.textContent = 'Added to cart!'
+        setTimeout(() => {
+          addCartBtn.current.style.backgroundColor = 'red'
+          addCartBtn.current.textContent = 'Add to Cart'
+        }, 2000)
       }
     }
 
@@ -84,7 +99,7 @@ export default function SingleProduct() {
             <small>Arrives shortly after release day</small>
           </div>
           <div>
-            <button id="addToCartBtn" onClick={handleAddToCart}>Add to Cart</button>
+            <button id="addToCartBtn" ref={addCartBtn} onClick={handleAddToCart}>Add to Cart</button>
           </div>
         </div>
         <div id='singleProductSummary'>
