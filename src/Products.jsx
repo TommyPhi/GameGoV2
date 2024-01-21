@@ -47,6 +47,11 @@ export default function Products() {
       resultsMessage.current.textContent = `Results for: '${filterBy}'`
     };
 
+    function handleClearFilters() {
+      resultsMessage.current.style.display = 'none'
+      setUrl('/database')
+    }
+
     return (
         <>
         <meta charSet="UTF-8" />
@@ -85,6 +90,7 @@ export default function Products() {
                 <button onClick={() => handleFilter('Simulator')}>Simulator</button>
               </div>
             </div>
+            <small onClick={handleClearFilters}>Clear</small>
           </div>
           </div>
           <div id="products">

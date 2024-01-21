@@ -859,7 +859,13 @@ small {
 }
 
 #dropDownBtns {
-    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#dropDownBtns small:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 #productsHeader {
